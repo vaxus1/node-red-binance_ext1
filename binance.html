@@ -9,6 +9,77 @@
 </style>
 
 <!-- =============================
+  BINANCE GET BALANCE NODE (FUTURES)
+============================= --> 
+
+<script type="text/x-red" data-template-name="binance-get-futures-balance">
+  <div class="form-row" id="binance-config-row">
+    <label for="node-input-binance"><i class="fa fa-key"></i> <span data-i18n="binance.label.credentials"></span></label>
+    <input type="text" id="node-input-binance">
+  </div>
+  <div class="form-row">
+    <label for="node-input-name"><i class="fa fa-tag"></i> <span data-i18n="node-red:common.label.name"></span></label>
+    <input type="text" id="node-input-name" data-i18n="[placeholder]node-red:common.label.name">
+  </div>
+</script>
+
+<script type="text/x-red" data-help-name="binance-get-futures-balance">
+  <h1>getFuturesBalance</h1>
+  <p>Gets the latest balance of a Binance FUTURES account.</p>
+  <h3>Input</h3>
+  <dl class="message-properties">
+    <dt>
+      API credentials
+      <span class="property-type">binance-credentials</span>
+    </dt>
+    <dd>API key and API secret for the Binance account.</dt>
+    <dt>
+      Ticker pair
+      <span class="property-type">string</span>
+    </dt>
+    <dd>The target ticker pair (i.e. BNBBTC). This can be passed in by using the <strong>msg.topic</strong> property and leaving the form input blank</dd>
+  </dl>
+  <h3>Ouput</h3>
+  <dl class="message-properties">
+    <dt>
+      msg.payload
+      <span class="property-type">object</span>
+    </dt>
+    <dd>Map of ticker symbols and the corresponding quantity on the target account.
+      <p>
+        Example:
+        <code style="white-space: pre-wrap; display: block; font-size: 0.85em;">{
+  "BTC": {
+    available: "0.20000000",
+    onOrder: "0.00000000"
+  }
+}</code>
+      </p>
+    </dd>
+  </dl>
+  <h3>Details:</h3>
+  <p>Most responses are directly passed through from the API to the output payload. Errors are directed to the nodes status message as well as the debug console. For more details see the <a href="https://github.com/binance-exchange/binance-official-api-docs/blob/master/rest-api.md">Binance REST API documentation</a>.</p>
+  <p>API endpoint: <a target="_blank" href="https://github.com/binance-exchange/node-binance-api blob/master/rest-api.md#account-information-user_data">GET /fapi/v2/balance</a></p>
+</script>
+
+<script type="text/javascript">
+  RED.nodes.registerType('binance-get-futures-balance', {
+    category: 'function',
+    defaults: {
+      name: {value: ""},
+      binance: {type: "binance-credentials", validate: validateBinanceNode},
+    },
+    icon: "binance.png",
+    color: "#f3ba2b",
+    inputs: 1,
+    outputs: 1,
+    label: function () {
+      return this.name || "getFuturesBalance";
+    }
+  });
+</script>
+
+<!-- =============================
   BINANCE CREDENTIALS NODE 
 ============================= --> 
 
