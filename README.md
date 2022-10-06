@@ -1,9 +1,10 @@
 # node-red-contrib-binance
 
-A [Node-RED](https://nodered.org) node wrapper to make API calls to the Binance exchange. The back-end node library used to communicate with the Binance exchange is one of the winner of the Binance API Competition. See: https://support.binance.com/hc/en-us/articles/115002103732-First-Winner-of-Binance-API-Competition.
+A [Node-RED](https://nodered.org) node wrapper to make API calls to the Binance exchange. 
+Extending original package with USM Futures extra nodes (adding usage of Futures API calls)
 
+The back-end node library used to communicate with the Binance exchange is
 github: https://github.com/binance-exchange/node-binance-api
-
 npm: https://www.npmjs.com/package/node-binance-api
 
 **IMPORTANT**
@@ -123,6 +124,22 @@ Input:
 Output:
 
 - {Array} list of current orders
+
+
+(***new) ### getFuturesBalance
+
+Get list of current balances.
+
+Input:
+
+- API credentials - *required*
+- tickerPair - *required*
+
+Output:
+
+- {object} map of ticker symbols and quantity on the account
+
+Notes: uses binance.futuresBalance()
 
 ### getBalance
 
