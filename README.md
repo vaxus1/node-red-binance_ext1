@@ -126,7 +126,7 @@ Output:
 - {Array} list of current orders
 
 
-(***new) ### getFuturesBalance
+### (***new) getFuturesBalance
 
 Get list of current balances.
 
