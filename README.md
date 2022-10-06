@@ -27,6 +27,21 @@ For buy/sell nodes, orders will be placed with the user specified parameters on 
 
 Nodes supported are a subset of the available functions in the API
 
+### (***new) getFuturesBalance
+
+Get list of current balances.
+
+Input:
+
+- API credentials - *required*
+- tickerPair - *required*
+
+Output:
+
+- {object} map of ticker symbols and quantity on the account
+
+Notes: uses binance.futuresBalance()
+
 ### getPrice
 
 Getting latest price of a symbol.
@@ -124,22 +139,6 @@ Input:
 Output:
 
 - {Array} list of current orders
-
-
-### (***new) getFuturesBalance
-
-Get list of current balances.
-
-Input:
-
-- API credentials - *required*
-- tickerPair - *required*
-
-Output:
-
-- {object} map of ticker symbols and quantity on the account
-
-Notes: uses binance.futuresBalance()
 
 ### getBalance
 
